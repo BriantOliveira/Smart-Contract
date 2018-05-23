@@ -24,7 +24,9 @@ contract Bank is Regulator {
   }
 
   function withdraw(uint amount) {
-    value -= amount;
+    if (checkValue(amount)) {
+      value -= amount;
+    }
   }
 
   function balance() returns (uint) {
