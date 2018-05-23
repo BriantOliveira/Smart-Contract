@@ -72,3 +72,22 @@ contract myFirstContract is Bank(10) {
   }
 
 }
+
+//Error handling
+contract testThrows {
+  function testAsser() {
+
+  }
+
+  function testRequire() {
+
+  }
+
+  function testRevert() {
+
+  }
+
+  function testThrow() {
+
+  }
+}
