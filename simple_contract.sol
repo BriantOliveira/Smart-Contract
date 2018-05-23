@@ -13,19 +13,26 @@ interface Regulator {
 //is stored in memory all the values is stored in the blockchain
 contract Bank is Regulator {
   uint private value;
-  //Creating a modifier so only the owner can access the bank
   // address is a reference to the enthereum address
   address private owner;
+  //Creating a modifier so only the owner can access the bank
+  modifier ownerFunc {
+    require(owner == msg.sender);
+    _;
+  }
 
   function Bank(uint amount) {
     value = amount;
+    owner = msg.sender;
   }
 
-  function deposit(uint amount){
+  // Calling the ownerFunc to state nobody but the owner of the original
+  // contract can modify anything.
+  function deposit(uint amount) ownerFunc {
     value += amount;
   }
 
-  function withdraw(uint amount) {
+  function withdraw(uint amount) ownerFunc {
     if (checkValue(amount)) {
       value -= amount;
     }
