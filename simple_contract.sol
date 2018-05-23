@@ -28,11 +28,11 @@ contract Bank is Regulator {
 
   // Calling the ownerFunc to state nobody but the owner of the original
   // contract can modify anything.
-  function deposit(uint amount) ownerFunc {
+  function deposit(uint amount) internal ownerFunc {
     value += amount;
   }
 
-  function withdraw(uint amount) ownerFunc {
+  function withdraw(uint amount) private ownerFunc {
     if (checkValue(amount)) {
       value -= amount;
     }
@@ -76,18 +76,22 @@ contract myFirstContract is Bank(10) {
 //Error handling
 contract testThrows {
   function testAsser() {
-
+    //Data vadilidation on runtime, the assert method consume gas as well while
+    //sending the message
+    assert(1 == 2) //which will be false
   }
 
   function testRequire() {
-
+    // paramenter requirement
+    require(2 == 1);
   }
 
   function testRevert() {
-
+    //revert should revert the gas cost of the message sent
+    revert()
   }
 
   function testThrow() {
-
+    throw;
   }
 }
