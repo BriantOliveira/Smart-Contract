@@ -16,4 +16,10 @@ contract myFirstContract {
     return name;
   }
 
+  function setAge(unit newAge) {
+    age = newAge
+  }
+  function getAge() returns (uint) {
+    return age;
+  }
 }
