@@ -8,12 +8,14 @@ interface Regulator {
   function loan() returns (bool);
 }
 
-
 //When you compile a contract the instance of that contract gets stores on
 //the enthereum blockchain so unlike other programming languages the instance
 //is stored in memory all the values is stored in the blockchain
 contract Bank is Regulator {
   uint private value;
+  //Creating a modifier so only the owner can access the bank
+  // address is a reference to the enthereum address
+  address private owner;
 
   function Bank(uint amount) {
     value = amount;
