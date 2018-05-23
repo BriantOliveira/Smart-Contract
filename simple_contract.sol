@@ -30,6 +30,14 @@ contract Bank is Regulator {
   function balance() returns (uint) {
     return value;
   }
+
+  function checkValue(uint amount) returns (bool) {
+    return amount >= value;
+  }
+
+  function loan() returns (bool) {
+    return true;
+  }
 }
 
 contract myFirstContract is Bank(10) {
@@ -52,11 +60,4 @@ contract myFirstContract is Bank(10) {
     return age;
   }
 
-  function checkValue(uint amount) returns (bool) {
-    return true;
-  }
-
-  function loan() returns (bool) {
-    return true;
-  }
 }
