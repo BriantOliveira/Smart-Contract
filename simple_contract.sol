@@ -38,7 +38,7 @@ contract Bank is Regulator {
   }
 
   function loan() returns (bool) {
-    return true;
+    return value > 0;
   }
 }
 
