@@ -52,6 +52,10 @@ contract myFirstContract is Bank(10) {
     return age;
   }
 
+  function checkValue(uint amount) returns (bool) {
+    return true;
+  }
+
   function loan() returns (bool) {
     return true;
   }
