@@ -1,5 +1,14 @@
 pragma solidity ^0.4.4;
 
+
+//Defining a interface
+interface Regulator {
+  //make sure that there is enough value in the case of withdraws
+  function checkValue(uint amount) returns (bool);
+  function loan() returns (bool);
+}
+
+
 //When you compile a contract the instance of that contract gets stores on
 //the enthereum blockchain so unlike other programming languages the instance
 //is stored in memory all the values is stored in the blockchain
@@ -21,6 +30,8 @@ contract Bank {
   function balance() returns (uint) {
     return value;
   }
+
+  function loan() returns (bool);
 }
 
 contract myFirstContract is Bank(10) {
@@ -41,5 +52,9 @@ contract myFirstContract is Bank(10) {
 
   function getAge() returns (uint) {
     return age;
+  }
+
+  function loan() returns (bool) {
+    return true;
   }
 }
