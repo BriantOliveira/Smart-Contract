@@ -3,8 +3,27 @@ pragma solidity ^0.4.4;
 //When you compile a contract the instance of that contract gets stores on
 //the enthereum blockchain so unlike other programming languages the instance
 //is stored in memory all the values is stored in the blockchain
+contract Bank {
+  uint private value;
 
-contract myFirstContract {
+  function Bank(uint amount) {
+    value = amount;
+  }
+
+  function deposit(uint amount){
+    value += amount;
+  }
+
+  function withdraw(uint amount) {
+    value -= amount;
+  }
+
+  function balance() returns (uint) {
+    return value;
+  }
+}
+
+contract myFirstContract is Bank(10) {
   string private name;
   uint private age;
 
@@ -19,6 +38,7 @@ contract myFirstContract {
   function setAge(unit newAge) {
     age = newAge
   }
+
   function getAge() returns (uint) {
     return age;
   }
